@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div>font test</div>;
+  return <div className="font-regular text-3xl text-primary">font test</div>;
 }
