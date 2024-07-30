@@ -28,7 +28,7 @@ const Footer: React.FC = () => {
               <Image src={Facebook} alt="Facebook" width={20} height={20} />
             </Link>
             <Link
-              href="https://www.youtube.com"
+              href="https://x.com/?lang=ko"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -42,7 +42,7 @@ const Footer: React.FC = () => {
               <Image src={Youtube} alt="Youtube" width={20} height={20} />
             </Link>
             <Link
-              href="https://www.youtube.com"
+              href="https://www.instagram.com/"
               target="_blank"
               rel="noopener noreferrer"
             >
