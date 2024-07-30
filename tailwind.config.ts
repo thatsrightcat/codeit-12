@@ -8,6 +8,17 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem", // 기본 패딩
+          sm: "1.5rem", // sm 브레이크포인트에서 패딩
+          md: "2.5rem", // md 브레이크포인트에서 패딩
+          lg: "3rem", // lg 브레이크포인트에서 패딩
+          xl: "4rem", // xl 브레이크포인트에서 패딩
+          "2xl": "5rem", // 2xl 브레이크포인트에서 패딩
+        },
+      },
       colors: {
         primary: "#333236",
         secondary: "",
