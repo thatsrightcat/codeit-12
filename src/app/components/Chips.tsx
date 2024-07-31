@@ -1,7 +1,28 @@
 interface ChipsProps {
-  type: string;
+  type:
+    | "remaining"
+    | "reservation"
+    | "completed"
+    | "confirmation"
+    | "confirmed";
   counting: number;
 }
+
+const CHIPS_STYLES = {
+  remaining: "bg-white text-blue-300",
+  reservation: "bg-blue-300 text-white",
+  completed: "bg-gray-300 text-gray-800",
+  confirmation: "bg-orange-100 text-orange-200",
+  confirmed: "bg-orange-100 text-orange-200",
+};
+
+const CHIPS_TYPES = {
+  remaining: "잔여",
+  reservation: "예약",
+  completed: "완료",
+  confirmation: "확정",
+  confirmed: "승인",
+};
 
 /**
  * @type
@@ -15,53 +36,12 @@ interface ChipsProps {
  */
 
 export default function Chips({ type, counting }: ChipsProps) {
-  switch (type) {
-    // 잔여
-    case "remaining":
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-white px-1 py-[0.1875rem] text-xs font-medium text-blue-300 md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">잔여</span>
-          <span className="">{counting}</span>
-        </div>
-      );
-    // 예약
-    case "reservation":
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-blue-300 px-1 py-[0.1875rem] text-xs font-medium text-white md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">예약</span>
-          <span className="">{counting}</span>
-        </div>
-      );
-    // 완료
-    case "completed":
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-gray-300 px-1 py-[0.1875rem] text-xs font-medium text-gray-800 md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">완료</span>
-          <span className="">{counting}</span>
-        </div>
-      );
-    // 확정
-    case "confirmation":
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-orange-100 px-1 py-[0.1875rem] text-xs font-medium text-orange-200 md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">확정</span>
-          <span className="">{counting}</span>
-        </div>
-      );
-    // 승인
-    case "confirmed":
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-orange-100 px-1 py-[0.1875rem] text-xs font-medium text-orange-200 md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">승인</span>
-          <span className="">{counting}</span>
-        </div>
-      );
-    default:
-      return (
-        <div className="flex h-[1.25rem] w-[2.8125rem] items-center rounded bg-white px-1 py-[0.1875rem] text-xs font-medium text-blue-300 md:h-[1.4375rem] md:w-[3.625rem] md:text-md xl:h-[1.4375rem] xl:w-[6.875rem] xl:text-md">
-          <span className="mr-0.5">예약상태</span>
-          <span className="">0</span>
-        </div>
-      );
-  }
+  return (
+    <div
+      className={`flex h-[1.25rem] w-full items-center rounded px-1 py-[0.1875rem] text-xs font-medium md:h-[1.4375rem] md:text-md xl:h-[1.4375rem] ${CHIPS_STYLES[type]}`}
+    >
+      <span className="mr-0.5">{CHIPS_TYPES[type]}</span>
+      <span>{counting}</span>
+    </div>
+  );
 }
