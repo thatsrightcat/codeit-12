@@ -1,5 +1,5 @@
 const buttonSizeVariant = {
-  lg: "w-[350px] h-[48px] py-[14px] rounded-[6px] text-lg font-bold leading-[26px] flex items-center justify-center",
+  lg: "w-full h-[48px] py-[14px] rounded-[6px] text-lg font-bold leading-[26px] flex items-center justify-center",
   md: "w-[144px] h-[48px] py-[8px] rounded-[6px] text-lg font-bold leading-[26px] flex items-center justify-center",
   sm: "w-[108px] h-[38px] py-[10px] rounded-[6px] text-md font-bold leading-[24px] flex items-center justify-center",
 };
