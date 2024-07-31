@@ -36,6 +36,13 @@ a {
   box-sizing: border-box;
 }
 
+/* focus 상태일 때 default outline-none으로 설정 */
+input,
+button,
+:focus {
+  @apply outline-none;
+}
+
 /* 유틸 CSS 스타일 */
 @layer utilities {
   .center-block {
