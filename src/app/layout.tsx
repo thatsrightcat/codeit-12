@@ -14,7 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body>{children}</body>
+      <body className="min-w-72">{children}</body>
     </html>
   );
 }
