@@ -22,7 +22,7 @@ type InputPropsType = {
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
 };
 
-export default function Input({
+export default function BasicInput({
   placeholder,
   fieldName,
   type,
