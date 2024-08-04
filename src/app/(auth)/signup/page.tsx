@@ -6,20 +6,23 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
 import BasicInput from "@components/Input/BasicInput";
+import { useAuth } from "@context/AuthContext";
 import icon_logo from "@icons/icon_logo_big.svg";
 
 export default function SignUp() {
+  const { signup } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
     reset,
-  } = useForm<TSignUpSchema>({ resolver: zodResolver(signUpSchema) });
+  } = useForm<TSignUpSchema>({
+    resolver: zodResolver(signUpSchema),
+    mode: "all",
+  });
 
   const onSubmit = async (data: TSignUpSchema) => {
-    // server로 회원가입 request를 보내는 logic
-
-    // form에 입력된 값 초기화(제거)
+    signup(data.email, data.nickname, data.password);
     reset();
   };
 
@@ -82,7 +85,7 @@ export default function SignUp() {
             />
           </section>
           <button
-            className={`${isValid ? "bg-[#0B3B2D]" : "bg-[#A4A1AA]"} rounded-[6px] py-[11px] font-[700] text-white`}
+            className={`${isValid ? "bg-[#0B3B2D]" : "bg-[#A4A1AA]"} rounded-[6px] py-[11px] font-[700] text-white transition`}
           >
             로그인 하기
           </button>

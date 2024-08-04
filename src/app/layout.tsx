@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import "pretendard/dist/web/variable/pretendardvariable-dynamic-subset.css";
 import "./globals.css";
 import ReactQueryProvider from "@utils/provider";
+import { AuthProvider } from "@context/AuthContext";
 
 export const metadata: Metadata = {
   title: "team12-global-nomad",
@@ -16,9 +17,9 @@ export default function RootLayout({
   return (
     <html lang="kr">
       <body className="min-w-72">
-        <ReactQueryProvider>
-          {children}
-        </ReactQueryProvider>
+        <AuthProvider>
+          <ReactQueryProvider>{children}</ReactQueryProvider>
+        </AuthProvider>
       </body>
     </html>
   );

@@ -6,25 +6,20 @@ import { TLoginSchema, LoginSchema } from "@customTypes/Auth";
 import { zodResolver } from "@hookform/resolvers/zod";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuth } from "@context/AuthContext";
 import icon_logo from "@icons/icon_logo_big.svg";
 
 export default function Login() {
+  const { login, user, isAuthenticated } = useAuth();
   const {
     register,
     handleSubmit,
     formState: { errors, isSubmitting, isValid },
     reset,
   } = useForm<TLoginSchema>({ resolver: zodResolver(LoginSchema) });
-  /** 1. data의 type은 TLoginSchema 입니다.
-   2. resolver라는 것을 통해 validation check를 zodResolver를 사용할 것이며, 미리 만들어 놓은 LoginSchema를 기준으로 validation check를 진행합니다.*/
 
   const onSubmit = async (data: FieldValues) => {
-    /** form으로부터 받아오는 data console에 찍어보기
-    console.log(data);*/
-
-    //server에 전송하는 logic 작성 필요
-
-    // form의 각 input field의 값을 초기화시키는 함수
+    login(data.email, data.password);
     reset();
   };
 
@@ -62,7 +57,8 @@ export default function Login() {
             />
           </section>
           <button
-            className={`${isValid ? "bg-[#0B3B2D]" : "bg-[#A4A1AA]"} rounded-[6px] py-[11px] font-[700] text-white`}
+            type="submit"
+            className={`${isValid ? "bg-[#0B3B2D]" : "bg-[#A4A1AA]"} rounded-[6px] py-[11px] font-[700] transition  text-white`}
           >
             로그인 하기
           </button>
