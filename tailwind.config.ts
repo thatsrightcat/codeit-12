@@ -8,17 +8,6 @@ const config: Config = {
   ],
   theme: {
     extend: {
-      container: {
-        center: true,
-        padding: {
-          DEFAULT: "1rem", // 기본 패딩
-          sm: "1.5rem", // sm 브레이크포인트에서 패딩
-          md: "2.5rem", // md 브레이크포인트에서 패딩
-          lg: "3rem", // lg 브레이크포인트에서 패딩
-          xl: "4rem", // xl 브레이크포인트에서 패딩
-          "2xl": "5rem", // 2xl 브레이크포인트에서 패딩
-        },
-      },
       colors: {
         primary: "#112211",
         secondary: "",
@@ -75,8 +64,45 @@ const config: Config = {
         pretendard: ["var(--font-[pretendard)", "sans-serif"],
       },
     },
+    screens: {
+      md: "768px",
+      xl: "1280px",
+    },
   },
-  plugins: [],
+  corePlugins: {
+    container: false,
+  },
+  plugins: [
+    function ({
+      addComponents,
+      theme,
+    }: {
+      addComponents: Function;
+      theme: Function;
+    }) {
+      const screens = theme("screens") as Record<string, string>;
+
+      addComponents({
+        ".container": {
+          width: "100%",
+          marginLeft: "auto",
+          marginRight: "auto",
+          paddingLeft: "1rem",
+          paddingRight: "1rem",
+          maxWidth: "none",
+          [`@media (min-width: ${screens.md})`]: {
+            paddingLeft: "1.5rem",
+            paddingRight: "1.5rem",
+          },
+          [`@media (min-width: ${screens.xl})`]: {
+            paddingLeft: "2.5rem",
+            paddingRight: "2.5rem",
+            maxWidth: "1280px",
+          },
+        },
+      });
+    },
+  ],
 };
 
 export default config;
