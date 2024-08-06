@@ -1,7 +1,7 @@
 "use client";
 
 import NavItem from "./NavItem";
-import ProfileImageUploader from "./ProfileImageUploader";
+import ProfileImage from "./ProfileImage";
 import Account from "@icons/icon_account.svg";
 import Setting from "@icons/icon_my_activities.svg";
 import Calendar from "@icons/icon_my_activities_reservations.svg";
@@ -17,8 +17,8 @@ const navItems = [
 const SideNavigation: React.FC = () => {
   return (
     <div className="shadow-[rgba(17, 34, 17, 0.05)] rounded-xl border border-gray-300 p-6 shadow-md">
-      <div className="mb-4">
-        <ProfileImageUploader />
+      <div className="mb-6 flex flex-col items-center">
+        <ProfileImage />
       </div>
       <nav>
         <ul className="flex flex-col gap-2">
