@@ -1,4 +1,4 @@
-import LoginForm from "@app/components/Form/loginForm";
+import LoginForm from "@app/components/Form/LoginForm";
 import Image from "next/image";
 import Link from "next/link";
 import icon_logo from "@icons/icon_logo_big.svg";
