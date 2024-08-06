@@ -36,7 +36,7 @@ export default function SignupForm() {
           name="email"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -46,6 +46,7 @@ export default function SignupForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
@@ -63,7 +64,7 @@ export default function SignupForm() {
           name="nickname"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -73,6 +74,7 @@ export default function SignupForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
@@ -90,7 +92,7 @@ export default function SignupForm() {
           name="password"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -100,6 +102,7 @@ export default function SignupForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
@@ -115,7 +118,7 @@ export default function SignupForm() {
           name="confirmPassword"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -125,6 +128,7 @@ export default function SignupForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
