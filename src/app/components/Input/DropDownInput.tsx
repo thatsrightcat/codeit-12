@@ -49,7 +49,7 @@ export default function DropDown({
             id={fieldName}
             value={selectedOption}
             placeholder={placeholder}
-            className="w-full cursor-pointer rounded-[6px] border border-[#79747E] px-[16px] py-[16px] caret-transparent "
+            className="w-full cursor-pointer rounded-[6px] border border-gray-700 px-[16px] py-[16px] caret-transparent"
           />
           <button className="cursor-pointer">
             <Image

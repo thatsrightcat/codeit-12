@@ -8,6 +8,7 @@ import {
   ReactNode,
 } from "react";
 import axios from "@api/axios";
+import { AxiosError } from "axios";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
 
@@ -33,6 +34,10 @@ type AuthContextType = AuthState & {
 
 type AuthProviderPropsType = {
   children: ReactNode;
+};
+
+type ErrorResponse = {
+  message: string;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -82,8 +87,9 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
         router.push("/");
       }
     } catch (error) {
-      console.error("Login error:", error);
-      throw error;
+      const axiosError = error as AxiosError<ErrorResponse>;
+      const errorMessage = axiosError.response?.data?.message;
+      alert(errorMessage);
     }
   };
 
@@ -94,6 +100,7 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
       user: null,
       isAuthenticated: false,
     });
+    router.push("/");
   };
 
   const signup = async (email: string, nickname: string, password: any) => {
@@ -112,11 +119,12 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
       });
       if (response.status === 201) {
         alert("가입이 완료되었습니다");
-        router.push("/login"); // 회원가입 성공 후 로그인 페이지로 이동
+        router.push("/"); // 회원가입 성공 후 로그인 페이지로 이동
       }
     } catch (error) {
-      console.error("signup error:", error);
-      throw error;
+      const axiosError = error as AxiosError<ErrorResponse>;
+      const errorMessage = axiosError.response?.data?.message;
+      alert(errorMessage);
     }
   };
 

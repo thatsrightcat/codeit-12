@@ -1,47 +1,39 @@
 "use client";
 
-import React, { useState } from "react";
-import {
-  UseFormRegister,
-  FieldError,
-  Merge,
-  FieldErrorsImpl,
-} from "react-hook-form";
+import React, { ChangeEventHandler, useState } from "react";
 import Image from "next/image";
 import icon_visibility_off from "@icons/icon_visibility_off.svg";
 import icon_visibility_on from "@icons/icon_visibility_on.svg";
 
-type InputPropsType = {
-  // react-hook-form 없이 사용할 경우 아래의 prop들을 사용합니다.
+type BasicInputPropsType = {
   placeholder: string;
   type: "email" | "password" | "text" | "number";
-  fieldName: string;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  // react-hook-form을 사용할 경우 아래의 prop들을 사용합니다.
-  register?: UseFormRegister<any>;
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
+  id: string;
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
+  invalid?: boolean;
 };
 
 export default function BasicInput({
   placeholder,
-  fieldName,
+  id,
   type,
-  register,
   onChange,
-  error,
-}: InputPropsType) {
+  onBlur,
+  invalid,
+}: BasicInputPropsType) {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
 
   return (
     <section>
       <div className="relative flex items-center">
         <input
-          {...(register && register(fieldName))}
-          id={fieldName}
+          id={id}
           type={isPasswordVisible ? "text" : type}
           placeholder={placeholder}
           onChange={onChange}
-          className={`${error ? "border-[#FF472E]" : "border-[#79747E]"} h-[58px] w-full rounded-[6px] border px-[16px] py-[20px] text-[16px] font-[400] text-[#1B1B1B]`}
+          onBlur={onBlur} 
+          className={`${invalid ? "border-red-100" : "border-gray-700"} h-[58px] w-full rounded-[6px] border px-[16px] py-[20px] text-[16px] font-[400] text-black`}
         />
         {type == "password" && (
           <div
@@ -59,11 +51,6 @@ export default function BasicInput({
           </div>
         )}
       </div>
-      {error && (
-        <p className="mt-[8px] text-[12px] text-[#FF472E]">
-          {error.message as string}
-        </p>
-      )}
     </section>
   );
 }
