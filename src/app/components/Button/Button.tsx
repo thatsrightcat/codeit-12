@@ -15,6 +15,7 @@ interface ButtonProps {
   size: "lg" | "md" | "sm";
   color: "dark" | "bright";
   onClick?: () => void;
+  className: string;
 }
 
 const Button = ({
@@ -24,6 +25,7 @@ const Button = ({
   size,
   color,
   onClick,
+  className,
 }: ButtonProps) => {
   return (
     <button
