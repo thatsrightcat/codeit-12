@@ -12,6 +12,7 @@ const Header: React.FC = () => {
     <header>
       <Link href="/">헤더영역 로고</Link>
       <Button
+      className=""
         color="dark"
         size="md"
         onClick={() => {

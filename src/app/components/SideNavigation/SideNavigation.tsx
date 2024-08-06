@@ -1,5 +1,3 @@
-"use client";
-
 import NavItem from "./NavItem";
 import ProfileImage from "./ProfileImage";
 import Account from "@icons/icon_account.svg";
