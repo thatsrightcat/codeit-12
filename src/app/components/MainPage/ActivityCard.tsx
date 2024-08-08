@@ -14,13 +14,16 @@ const ActivityCard = ({
   return (
     <div>
       <Link href={`/activity/${id}`}>
-        <div className="flex flex-col gap-[16px]">
-          <Image
-            src={`${bannerImageUrl}`}
-            alt="card image"
-            width={168}
-            height={168}
-          />
+        <div className="mb-[10px] flex flex-col gap-[16px] md:mb-[30px] xl:mb-[48px]">
+          <div className="relative h-[168px] w-[168px] md:h-[221px] md:w-[221px] xl:h-[283px] xl:w-[283px]">
+            <Image
+              src={`${bannerImageUrl}`}
+              alt="card image"
+              fill
+              objectFit="cover"
+              style={{ borderRadius: 15 }}
+            />
+          </div>
           <div>
             <div className="flex">
               <Image src={icon_star} alt="star icon" width={20} height={20} />
@@ -29,8 +32,11 @@ const ActivityCard = ({
                 <span className="text-[#A1A1A1]">{` (${reviewCount})`}</span>
               </p>
             </div>
-            <div>{title}</div>
-            <div>{price}</div>
+            <div className="text-[18px] font-semibold md:text-2xl">{title}</div>
+            <div className="text-xl font-bold md:text-[24px]">
+              {`₩ ${price} `}
+              <span className="text-lg text-gray-800 md:text-xl">/ 인</span>
+            </div>
           </div>
         </div>
       </Link>
