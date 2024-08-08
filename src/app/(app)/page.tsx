@@ -1,7 +1,6 @@
 "use client";
 
 import ActivityCardList from "@app/components/MainPage/ActivityCardList";
-import Pagination from "@app/components/MainPage/Pagination";
 import CategoryFilter from "@components/MainPage/CategoryFilter";
 
 export default function Home() {
@@ -38,12 +37,12 @@ export default function Home() {
           {/* Category 선택 기능 필요 */}
           <CategoryFilter />
           {/* Filter 기능 필요 */}
-          <h1 className="text-[18px] font-bold md:text-[36px]">🎯모든 체험</h1>
-          <div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+          <h1 className="my-6 text-[18px] font-bold md:my-8 md:text-[36px]">
+            🎯모든 체험
+          </h1>
+          <div>
             <ActivityCardList />
           </div>
-          {/* 페이지네이션 구현 필요 */}
-          <Pagination />
         </section>
       </div>
     </>
