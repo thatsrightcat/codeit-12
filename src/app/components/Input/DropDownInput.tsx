@@ -9,9 +9,9 @@ import icon_trailing_up from "@icons/icon_trailing_up.svg";
 type DropDownOption = string;
 
 type DropDownPropsType = {
-  dropDownOptions: DropDownOption[];
-  placeholder: string;
-  id: string;
+  dropDownOptions: DropDownOption[] | undefined;
+  placeholder?: string;
+  id?: string;
   value?: string; // Ensure the value prop is used for controlled component
   onChange: (value: string) => void; // Update the onChange type to handle value changes
   onBlur?: (e: React.FocusEvent<HTMLInputElement, Element>) => void;
@@ -24,17 +24,19 @@ const DropDownInput = forwardRef<HTMLInputElement, DropDownPropsType>(
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+    const [selectedItem, setSelectedItem] = useState("");
 
     return (
       <div className="flex flex-col">
         <section>
           <div className="relative flex items-center">
             <input
+              readOnly
               ref={ref}
               onBlur={onBlur}
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
               id={id}
-              value={value} // Controlled component
+              value={selectedItem} // Controlled component
               placeholder={placeholder}
               className={`w-full cursor-pointer rounded-[6px] border ${invalid ? "border-red-500" : "border-gray-700"} px-[16px] py-[16px] caret-transparent`}
             />
@@ -48,12 +50,13 @@ const DropDownInput = forwardRef<HTMLInputElement, DropDownPropsType>(
           </div>
         </section>
         {isDropdownOpen && (
-          <section className="mt-[16px] shadow-md">
+          <section className="mt-[16px] h-[200px] overflow-y-scroll shadow-md">
             <ul>
-              {dropDownOptions.map((option, index) => (
+              {dropDownOptions?.map((option, index) => (
                 <li
                   onClick={() => {
                     onChange(option); // Notify React Hook Form of the selected option
+                    setSelectedItem(option);
                     setIsDropdownOpen(false);
                   }}
                   key={index}
