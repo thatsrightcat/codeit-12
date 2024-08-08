@@ -16,7 +16,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="kr">
-      <body className="min-w-72">
+      <body className="min-w-80">
         <AuthProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
         </AuthProvider>

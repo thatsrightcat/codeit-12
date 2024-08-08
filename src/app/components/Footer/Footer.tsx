@@ -5,11 +5,11 @@ import Instagram from "@icons/icon_sns_instagram.svg";
 import Twitter from "@icons/icon_sns_twitter.svg";
 import Youtube from "@icons/icon_sns_youtube.svg";
 
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <footer className="min-h-40 bg-primary py-8">
       <div className="container">
-        <div className="flex flex-wrap items-center justify-center gap-3 text-lg text-gray-700 md:justify-between">
+        <div className="flex flex-wrap items-center justify-center gap-3 text-lg text-[#4a524e] md:justify-between">
           <div className="">&copy; 2023 @codeit-2023</div>
           <div className="flex gap-7">
             <Link href="/privacy-policy" className="hover:underline">
@@ -53,6 +53,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}
