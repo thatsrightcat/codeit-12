@@ -22,16 +22,16 @@ export default function CalendarSection() {
     year: string,
     month: string,
   ): Promise<DailyReservationsStatus[]> => {
-    if (selectedActivityId && year && month) {
-      return await getMonthlyReservationsStatus(
-        selectedActivityId,
-        year,
-        month,
-      );
+    const activityId = selectedActivityId || latestActivity;
+    if (activityId && year && month) {
+      return await getMonthlyReservationsStatus(activityId, year, month);
     }
     return []; // Return an empty array if dependencies are not available
   };
   console.log(selectedActivityId);
+
+  // 가장 최근에 생성된 활동을 초기값으로 받습니다.
+  const latestActivity = myActivityList[0].id.toString();
 
   // Use useQuery with a function that accepts parameters
   const { data, error, isLoading } = useQuery<DailyReservationsStatus[]>({

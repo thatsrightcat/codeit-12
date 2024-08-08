@@ -24,9 +24,7 @@ export default function MyActivityListContextProvider({
   const [myActivityList, setMyActivityList] = useState<MyActivityType[] | []>(
     data,
   );
-  const [selectedActivityId, setSelectedActivityId] = useState(
-    data[0].id.toString(),
-  );
+  const [selectedActivityId, setSelectedActivityId] = useState("");
 
   const handleMyActivitySelect = (selectedActivity: string) => {
     setSelectedActivityId(selectedActivity);

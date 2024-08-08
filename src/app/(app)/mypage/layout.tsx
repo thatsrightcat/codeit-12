@@ -26,6 +26,9 @@ export default async function MyPageLayout({
         </div>
         <div className="flex-1">{children}</div>
       </div>
+      <MyActivityListContextProvider data={myActivityList}>
+        <div className="flex-1">{children}</div>
+      </MyActivityListContextProvider>
     </div>
   );
 }
