@@ -119,7 +119,7 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
       });
       if (response.status === 201) {
         alert("가입이 완료되었습니다");
-        router.push("/"); // 회원가입 성공 후 로그인 페이지로 이동
+        router.push("/login"); // 회원가입 성공 후 로그인 페이지로 이동
       }
     } catch (error) {
       const axiosError = error as AxiosError<ErrorResponse>;

@@ -7,11 +7,13 @@ export default function SignUp() {
   return (
     <div className="container mt-[104px] max-w-[640px]">
       <div className="flex flex-col items-center">
-        <Image
-          className="w-[270px] md:w-[340px]"
-          alt="icon_logo"
-          src={icon_logo}
-        />
+        <Link href={"/"}>
+          <Image
+            className="w-[270px] md:w-[340px]"
+            alt="icon_logo"
+            src={icon_logo}
+          />
+        </Link>
         <SignupForm />
         <section className="mt-[32px] flex gap-3 text-[#333236]">
           <p>회원이신가요?</p>
