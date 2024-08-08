@@ -37,6 +37,10 @@ instance.interceptors.response.use(
       try {
         const refreshToken = Cookies.get("refreshToken");
 
+        if (!refreshToken) {
+          throw new Error("No refresh token available.");
+        }
+
         const response = await instance.post<{
           accessToken: string;
           refreshToken: string;
