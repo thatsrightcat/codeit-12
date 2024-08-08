@@ -30,6 +30,7 @@ type AuthContextType = AuthState & {
   login: (username: string, password: string) => Promise<void>;
   logout: () => void;
   signup: (email: string, nickname: string, password: string) => Promise<void>;
+  isLoading: boolean;
 };
 
 type AuthProviderPropsType = {
@@ -47,6 +48,7 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
     user: null,
     isAuthenticated: false,
   });
+  const [isLoading, setIsLoading] = useState(true);
   const router = useRouter();
 
   useEffect(() => {
@@ -59,6 +61,7 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
           isAuthenticated: true,
         }));
       }
+      setIsLoading(false);
     };
     setIsAuthenticated();
   }, []);
@@ -129,7 +132,9 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
   };
 
   return (
-    <AuthContext.Provider value={{ ...authState, login, logout, signup }}>
+    <AuthContext.Provider
+      value={{ ...authState, login, logout, signup, isLoading }}
+    >
       {children}
     </AuthContext.Provider>
   );
