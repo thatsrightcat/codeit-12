@@ -26,10 +26,6 @@ export const LoginSchema = z.object({
   password: z
     .string({ required_error: "비밀번호를 입력해 주세요" })
     .min(8, { message: "8자리 이상 입력해 주세요" }),
-  category: z.string({
-    message: "카테고리를 선택해 주세요",
-    required_error: "카테고리를 선택해 주세요",
-  }),
 });
 
 export type TLoginSchema = z.infer<typeof LoginSchema>;
