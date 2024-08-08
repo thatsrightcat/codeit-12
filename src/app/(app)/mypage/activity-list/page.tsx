@@ -1,4 +1,4 @@
-const ActivityList: React.FC = () => {
+export default function ActivityList() {
   return (
     <div>
       <h1 className="">예약 내역</h1>
@@ -9,6 +9,4 @@ const ActivityList: React.FC = () => {
       <p className="">리스트</p>
     </div>
   );
-};
-
-export default ActivityList;
+}
