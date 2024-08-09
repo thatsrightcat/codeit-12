@@ -9,7 +9,7 @@ import icon_trailing_up from "@icons/icon_trailing_up.svg";
 type DropDownOption = string;
 
 type DropDownPropsType = {
-  dropDownOptions: DropDownOption[] | undefined;
+  dropDownOptions: DropDownOption[] | [];
   placeholder?: string;
   id?: string;
   value?: string; // Ensure the value prop is used for controlled component
@@ -24,7 +24,9 @@ const DropDownInput = forwardRef<HTMLInputElement, DropDownPropsType>(
     ref: ForwardedRef<HTMLInputElement>,
   ) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-    const [selectedItem, setSelectedItem] = useState("");
+    const [selectedItem, setSelectedItem] = useState(
+      dropDownOptions.length > 0 ? dropDownOptions[0] : "",
+    );
 
     return (
       <div className="flex flex-col">
