@@ -127,4 +127,17 @@ button,
   .no-scrollbar::-webkit-scrollbar {
     display: none; /* Chrome, Safari, Opera */
   }
+
+   /** 
+  * 요소사이를 나누는 선(디자인적 요소)
+  * 
+  * @example
+  * <span className="divider h-3 bg-gray-300"></span>
+  */
+  .divider {
+    @apply relative;
+  }
+  .divider::before {
+    @apply absolute left-0 h-full top-0 w-px bg-inherit content-[''];
+  }
 }
