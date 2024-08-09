@@ -24,11 +24,10 @@ export default async function MyPageLayout({
         <div className="hidden w-full md:block md:w-4/12 xl:w-96">
           <SideNavigation></SideNavigation>
         </div>
-        <div className="flex-1">{children}</div>
+        <MyActivityListContextProvider data={myActivityList}>
+          <div className="flex-1">{children}</div>
+        </MyActivityListContextProvider>
       </div>
-      <MyActivityListContextProvider data={myActivityList}>
-        <div className="flex-1">{children}</div>
-      </MyActivityListContextProvider>
     </div>
   );
 }
