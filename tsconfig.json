@@ -27,7 +27,9 @@
       "@images/*": ["./public/images/*"],
       "@icons/*": ["./public/icons/*"],
       "@customTypes/*": ["./src/types/*"]
-    }
+    },
+    // 카카오 맵
+    "types": ["kakao.maps.d.ts"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
   "exclude": ["node_modules"]
