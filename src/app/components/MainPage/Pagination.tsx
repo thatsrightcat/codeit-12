@@ -1,5 +1,8 @@
 import { MouseEvent } from "react";
 import * as React from "react";
+import Image from "next/image";
+import Arrow_Left from "@icons/icon_arrow_pagination_left_off.svg";
+import Arrow_Right from "@icons/icon_arrow_pagination_right_on.svg";
 
 interface PaginationProps {
   totalCount: number;
