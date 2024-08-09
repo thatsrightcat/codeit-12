@@ -24,6 +24,7 @@ const ActivityCard = ({
               style={{ borderRadius: 15 }}
             />
           </div>
+
           <div>
             <div className="flex">
               <Image src={icon_star} alt="star icon" width={20} height={20} />
@@ -37,6 +38,7 @@ const ActivityCard = ({
               {`₩ ${price} `}
               <span className="text-lg text-gray-800 md:text-xl">/ 인</span>
             </div>
+
           </div>
         </div>
       </Link>
