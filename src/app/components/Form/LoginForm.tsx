@@ -11,8 +11,7 @@ export default function LoginForm() {
   const {
     control,
     handleSubmit,
-    formState: { errors, isValid, isSubmitted },
-    reset,
+    formState: { errors, isValid },
   } = useForm<TLoginSchema>({
     resolver: zodResolver(LoginSchema),
     mode: "onChange",
@@ -21,6 +20,7 @@ export default function LoginForm() {
   const onSubmit = async (data: TLoginSchema) => {
     login(data.email, data.password);
   };
+
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -33,7 +33,7 @@ export default function LoginForm() {
           name="email"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -43,6 +43,7 @@ export default function LoginForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
@@ -58,7 +59,7 @@ export default function LoginForm() {
           name="password"
           control={control}
           render={({
-            field: { onChange, onBlur },
+            field: { onChange, onBlur, ref },
             fieldState: { invalid },
           }) => (
             <BasicInput
@@ -68,6 +69,7 @@ export default function LoginForm() {
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
+              ref={ref}
             />
           )}
         />
