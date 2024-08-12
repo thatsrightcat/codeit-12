@@ -1,8 +1,4 @@
 import Image from "next/image";
-// 스위퍼 추가
-import "swiper/css";
-import { Swiper, SwiperSlide } from "swiper/react";
-//
 import bannerImage from "@images/banner_image.png";
 
 interface SubImages {
