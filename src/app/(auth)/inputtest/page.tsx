@@ -1,7 +1,5 @@
 import TestForm from "@app/components/Form/TestForm";
-import Image from "next/image";
 import Link from "next/link";
-import icon_logo from "@icons/icon_logo_big.svg";
 
 export default function InputTestPage() {
   return (

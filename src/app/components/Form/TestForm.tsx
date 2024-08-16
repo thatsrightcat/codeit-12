@@ -94,17 +94,19 @@ export default function TestForm() {
           name="dropdown"
           control={control}
           render={({
-            field: { onChange, onBlur, ref },
+            field: { onChange, onBlur, ref, value },
             fieldState: { invalid },
           }) => (
             <DropDownInput
               dropDownOptions={["옵션1", "옵션2", "옵션3", "옵션4"]}
               placeholder="옵션을 선택해 주세요"
+              setInitialValue={false}
               id="dropDown"
               onChange={onChange}
               onBlur={onBlur}
               invalid={invalid}
               ref={ref}
+              value={value}
             />
           )}
         />
@@ -147,10 +149,11 @@ export default function TestForm() {
           name="startTime"
           control={control}
           render={({
-            field: { onChange, onBlur, ref },
+            field: { onChange, onBlur, ref, value },
             fieldState: { invalid },
           }) => (
             <DropDownInput
+              setInitialValue={false}
               dropDownOptions={["00:00", "01:00", "02:00", "03:00"]}
               placeholder="00:00"
               id="time"
@@ -158,6 +161,7 @@ export default function TestForm() {
               onBlur={onBlur}
               invalid={invalid}
               ref={ref}
+              value={value}
             />
           )}
         />

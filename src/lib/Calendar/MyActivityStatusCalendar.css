@@ -1,0 +1,212 @@
+.react-calendar {
+  /* width: 350px; */
+  width: 100%;
+  /* max-width: 100%; */
+  background-color: white;
+  /* border: 1px solid #a0a096; */
+  /* border: 1px solid #e8e8e8; */
+  /* font-family 변경 필요 --> Inter로*/
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.125em;
+  /* font-color를 global nomad의 color로 변경해줬습니다. */
+  color: #969696;
+  /* text-size */
+  font-size: 16x;
+  font-weight: 500;
+  border-radius: 16px;
+  .react-calendar__month-view__days__day--neighboringMonth {
+    background-color: #fafafa;
+    /* visibility: hidden; */
+  }
+}
+
+.react-calendar--doubleView {
+  width: 700px;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer {
+  display: flex;
+  margin: -0.5em;
+}
+
+.react-calendar--doubleView .react-calendar__viewContainer > * {
+  width: 50%;
+  margin: 0.5em;
+}
+
+.react-calendar,
+.react-calendar *,
+.react-calendar *:before,
+.react-calendar *:after {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+/* react-calendar의 button tags styling */
+
+.react-calendar button {
+  margin: 0;
+  /* border: 0; */
+  border: 1px solid #e8e8e8;
+}
+
+.react-calendar button:enabled:hover {
+  cursor: pointer;
+}
+
+/* react-calendar의 navigation bar관련 */
+
+.react-calendar__navigation {
+  display: flex;
+  height: 70px;
+  /* margin-bottom: 1em; */
+  color: #1b1b1b;
+  /* margin: 0px 200px; */
+  background-color: #fafafa;
+  font-weight: 700;
+  font-size: 20px;
+}
+
+.react-calendar__navigation button {
+  min-width: 100px;
+  border: none;
+  flex: 1;
+  /* background: red; */
+}
+
+/* .react-calendar__navigation__prev-button {
+} */
+
+.react-calendar__navigation button:disabled {
+  background-color: #f0f0f0;
+}
+
+.react-calendar__navigation button:enabled:hover,
+.react-calendar__navigation button:enabled:focus {
+  background-color: none;
+}
+
+.react-calendar__month-view__weekdays {
+  text-align: left;
+  text-transform: uppercase;
+  font: inherit;
+  font-size: 0.75em;
+  /* font-weight: bold; */
+  font-weight: normal;
+}
+
+/* 가장 첫번째 날과 가장 마지막 날에대한 border radious 둥글게가 필요함 */
+.react-calendar__month-view__weekdays__weekday {
+  padding: 0.5em;
+  border: 1px solid #e8e8e8;
+  /* padding: 0; */
+
+  > abbr {
+    text-decoration: none;
+  }
+}
+
+.react-calendar__month-view__weekNumbers .react-calendar__tile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font: inherit;
+  font-size: 0.75em;
+  font-weight: bold;
+}
+
+.react-calendar__month-view__days__day--weekend {
+  color: #969696;
+}
+
+.react-calendar__month-view__days__day--neighboringMonth,
+.react-calendar__decade-view__years__year--neighboringDecade,
+.react-calendar__century-view__decades__decade--neighboringCentury {
+  color: #969696;
+  /* color: red; */
+  /* background-color: #e8e8e8 !important; */
+}
+
+.react-calendar__year-view .react-calendar__tile,
+.react-calendar__decade-view .react-calendar__tile,
+.react-calendar__century-view .react-calendar__tile {
+  padding: 2em 0.5em;
+}
+
+.react-calendar__tile {
+  max-width: 100%;
+  padding: 10px 6.6667px;
+  background: none;
+  line-height: 16px;
+  font: inherit;
+  /* display: flex; */
+  height: 154px;
+  /* flex-direction: column; */
+  /* justify-content: space-between; */
+  /* font-size: 0.833em; */
+}
+
+/* default date value를 다 없애버린다. */
+.react-calendar__tile abbr {
+  display: none; /* Hide the default <abbr> tags */
+}
+
+/* disabled가 무슨역할을 하는지 모르겠음 */
+/* .react-calendar__tile:disabled {
+  background-color: #f0f0f0;
+  color: #ababab;
+} */
+
+/* 아래는 disabled 상태인 버튼이 없어서 확인이 어려움 */
+.react-calendar__month-view__days__day--neighboringMonth:disabled,
+.react-calendar__decade-view__years__year--neighboringDecade:disabled,
+.react-calendar__century-view__decades__decade--neighboringCentury:disabled {
+  color: #cdcdcd;
+}
+
+/* enabled된 tile에 대해서 hover나 focus했을 떄  */
+/* hover에만 적용함 */
+/* .react-calendar__tile:enabled:focus */
+.react-calendar__tile:enabled:hover {
+  /* background-color: #e6e6e6; */
+  background-color: #fafafa;
+}
+
+/* 오늘에 해당하는 날짜가 --now구나 */
+.react-calendar__tile--now {
+  /* background-color: #ffff76; */
+  background-color: none;
+}
+
+.react-calendar__tile--now:enabled:hover,
+.react-calendar__tile--now:enabled:focus {
+  /* background-color: #ffffa9; */
+  background-color: none;
+}
+
+.react-calendar__tile--hasActive {
+  background-color: #76baff;
+}
+
+.react-calendar__tile--hasActive:enabled:hover,
+.react-calendar__tile--hasActive:enabled:focus {
+  background-color: #a9d4ff;
+}
+
+/* 현재 value값에 해당하는 tile을 --active tile이라고 하는구나 */
+.react-calendar__tile--active {
+  /* background-color: #fafafa; */
+  background-color: none;
+}
+
+/* 이것도 뭔지 모르겠음 */
+/* .react-calendar__tile--active:enabled:hover,
+.react-calendar__tile--active:enabled:focus {
+  background: #1087ff;
+} */
+
+/* --selectedRange 뭔지 모르겠다 */
+/* .react-calendar--selectRange .react-calendar__tile--hover {
+  background-color: #e6e6e6;
+} */

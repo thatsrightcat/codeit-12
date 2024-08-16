@@ -1,11 +1,11 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { MouseEvent } from "react";
 import instance from "@api/axios";
 import { ActivityResponse } from "@customTypes/MainPage";
 import { useQuery } from "@tanstack/react-query";
-import { useSearchParams, useRouter } from "next/navigation";
+import { useSearchParams, useRouter, usePathname } from "next/navigation";
 import ActivityCard from "./ActivityCard";
 import CategorySort from "./CategorySort";
 import Pagination from "./Pagination";
@@ -46,57 +46,33 @@ const ActivityCardList = () => {
   const [currentPageNum, setCurrentPageNum] = useState(0); // 현재 페이지 번호
   const [currentCategory, setCurrentCategory] = useState(""); // 현재 카테고리
   const [currentSort, setCurrentSort] = useState(""); // 현재 정렬
-  const searchParams = useSearchParams();
-  const pageParam = searchParams.get("page");
-  const router = useRouter();
   const currentPageGroup = Math.floor(currentPageNum / 5); // 현재 페이지 그룹 계산
   const currentSize = useOffsetSize(); // 페이지의 데이터 수 - 화면 크기에 따라 결정
 
-  const handlePageNum = (page: number) => {
-    setCurrentPageNum(page);
-  };
+  const router = useRouter();
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    const categoryParam = searchParams.get("category");
-    const sortParam = searchParams.get("sort");
-    if (sortParam) setCurrentSort(sortParam);
-    if (categoryParam) setCurrentCategory(categoryParam);
-    if (pageParam) setCurrentPageNum(Number(pageParam) - 1);
-  }, []);
-
-  const setSearchParams = useCallback(
+  const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString());
       params.set(name, value);
+      return params.toString();
     },
     [searchParams],
   );
 
-  const deleteSearchParams = useCallback(
-    (name: string) => {
-      const params = new URLSearchParams(searchParams.toString());
-      params.delete(name);
-    },
-    [searchParams],
-  );
-  useEffect(() => {
-    if (currentSort) setSearchParams("sort", currentSort);
-    if (currentCategory) setSearchParams("category", currentCategory);
-
-    setSearchParams("page", String(currentPageNum + 1));
-    router.push(`?${searchParams}`);
-  }, [
-    currentSort,
-    currentCategory,
-    currentPageNum,
-    setSearchParams,
-    router,
-    searchParams,
-  ]);
+  const handlePageNum = (pageNum: number) => {
+    setCurrentPageNum(pageNum);
+    router.push(
+      pathname + "?" + createQueryString("page", String(pageNum + 1)),
+    );
+  };
 
   const handleSort = (e: MouseEvent<HTMLButtonElement>) => {
     const button = e.target as HTMLButtonElement;
     setCurrentSort(button.value);
+    router.push(pathname + "?" + createQueryString("sort", button.value));
     setCurrentPageNum(0);
   };
 
@@ -104,10 +80,10 @@ const ActivityCardList = () => {
     const button = e.target as HTMLButtonElement;
     if (currentCategory === button.value) {
       setCurrentCategory("");
-      deleteSearchParams("category");
+      router.replace(pathname);
     } else {
       setCurrentCategory(button.value);
-      setSearchParams("category", button.value);
+      router.push(pathname + "?" + createQueryString("category", button.value));
     }
     setCurrentPageNum(0);
   };
@@ -139,7 +115,6 @@ const ActivityCardList = () => {
           ))}
         </div>
         <div className="mb-[83px] flex items-center justify-center">
-          {/* 페이지네이션 */}
           <Pagination
             currentPage={currentPageNum}
             totalCount={totalCount}

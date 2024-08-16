@@ -3,6 +3,7 @@
 import { ActivityInfo } from "@customTypes/MainPage";
 import Image from "next/image";
 import Link from "next/link";
+import { formatPriceKorean } from "@utils/formatPrice";
 import icon_star from "@icons/icon_star_on.svg";
 
 interface ActivityCardProps {
@@ -39,7 +40,7 @@ const ActivityCard = ({
             </div>
             <div className="text-[18px] font-semibold md:text-2xl">{title}</div>
             <div className="text-xl font-bold md:text-[24px]">
-              {`₩ ${price} `}
+              {formatPriceKorean(price)}
               <span className="text-lg text-gray-800 md:text-xl">/ 인</span>
             </div>
           </div>

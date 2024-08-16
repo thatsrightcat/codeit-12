@@ -1,4 +1,4 @@
-import { getMyActivityList } from "@api/myactivity-status";
+import { getMyActivityList } from "@api/MyActivityStatusApi";
 import SideNavigation from "@app/components/SideNavigation/SideNavigation";
 // "next/headers" 에서 제공하는 {cookies}를 사용하면, server-side에서 data-fetching을 하려고 할 때, browser에 저장된 쿠키값에 접근할 수 있는 것 같습니다.
 import { cookies } from "next/headers";

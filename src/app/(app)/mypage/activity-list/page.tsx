@@ -3,7 +3,7 @@
 import { useContext } from "react";
 import { deleteMyActivity } from "@api/myActivites";
 import Button from "@app/components/Button/Button";
-import { MyActivityType } from "@customTypes/MyActivity-Status";
+import { MyActivityType } from "@customTypes/MyActivityStatusType";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import Image from "next/image";
 import EmptyState from "@components/EmptyState/EmptyState";

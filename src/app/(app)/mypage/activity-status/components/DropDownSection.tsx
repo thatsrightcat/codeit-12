@@ -1,17 +1,19 @@
 "use client";
 
+import { useState } from "react";
 import DropDownInput from "@app/components/Input/DropDownInput";
 import useMyActivityList from "@hooks/useMyActivityList";
 
 export default function DropDownSection() {
   // useMyActivityList() hook으로부터 myActivityList와 handleMyActivitySelect를 가져옵니다.
-  const { myActivityList, handleMyActivitySelect } = useMyActivityList();
+  const { myActivityList, handleMyActivitySelect, selectedActivity } =
+    useMyActivityList();
 
   // dropdownOptions을 설정해줍니다.
   const dropdownOptions = myActivityList.map((myActivity) => myActivity.title);
 
   // dropDownOptions중에 선택된 option의 activityId를 알아냅니다.
-  const findSelectedActivityId = (selectedActivity: string) => {
+  const findSelectedActivityId = (selectedActivity: string | undefined) => {
     const selectedActivityInfo = myActivityList?.find(
       (myActivity) => myActivity.title === selectedActivity,
     );
@@ -24,16 +26,19 @@ export default function DropDownSection() {
    * 사용자가 activity를 선택하면 선택된 activity의 id정보를 MyActivityContext에 전달하는 함수입니다.
    * 전달된 정보는 Calendar Section에서 사용됩니다.
    */
-  const setSelectedActivityId = async (selectedActivity: string) => {
+  const handleActivitySelect = async (selectedActivity: string | undefined) => {
     const selectedActivityId = findSelectedActivityId(selectedActivity);
-    handleMyActivitySelect(selectedActivityId as string);
+    handleMyActivitySelect(selectedActivity, selectedActivityId);
   };
 
   return (
     <DropDownInput
-      onChange={setSelectedActivityId}
+      setInitialValue
+      onChange={handleActivitySelect}
       dropDownOptions={dropdownOptions}
-      placeholder="체험을 선택해 주세요"
+      value={selectedActivity}
+      inputLable="체험명"
+      placeholder="place holder"
     />
   );
 }

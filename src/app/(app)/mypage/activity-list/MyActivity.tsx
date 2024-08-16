@@ -1,7 +1,7 @@
 "use client";
 
 import { formatPriceKorean } from "@/utils/formatPrice";
-import { MyActivityType } from "@customTypes/MyActivity-Status";
+import { MyActivityType } from "@customTypes/MyActivityStatusType";
 import Image from "next/image";
 import { useDropdown } from "@hooks/useDropdown";
 import Menu from "@icons/icon_menu.svg";
@@ -28,7 +28,7 @@ const MyActivity: React.FC<MyActivityProps> = ({
   };
 
   return (
-    <li className="shadow-custom-shadow-01 flex h-32 rounded-3xl bg-white md:h-[9.75rem] xl:h-[12.75rem]">
+    <li className="flex h-32 rounded-3xl bg-white shadow-custom-shadow-01 md:h-[9.75rem] xl:h-[12.75rem]">
       <div className="relative aspect-square h-full overflow-hidden rounded-l-3xl">
         <Image
           src={bannerImageUrl}
@@ -63,7 +63,7 @@ const MyActivity: React.FC<MyActivityProps> = ({
               />
             </button>
             {isOpen && (
-              <div className="shadow-custom-shadow-01 absolute right-0 top-full z-10 mt-2 w-full min-w-28 rounded-lg border border-gray-300 bg-white text-center text-md font-medium text-gray-800 md:min-w-32 md:text-lg xl:min-w-40 xl:text-2lg">
+              <div className="absolute right-0 top-full z-10 mt-2 w-full min-w-28 rounded-lg border border-gray-300 bg-white text-center text-md font-medium text-gray-800 shadow-custom-shadow-01 md:min-w-32 md:text-lg xl:min-w-40 xl:text-2lg">
                 <button
                   onClick={handleDelete}
                   className="block w-full border-b border-gray-300 px-4 py-2 md:h-14 xl:h-16"

@@ -103,6 +103,7 @@ export const AuthProvider = ({ children }: AuthProviderPropsType) => {
       user: null,
       isAuthenticated: false,
     });
+    window.location.reload();
     router.push("/");
   };
 

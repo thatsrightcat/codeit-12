@@ -39,7 +39,7 @@ const PopularActivityList = () => {
   };
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     slidesToShow: 3,
     slidesToScroll: 3,
@@ -54,6 +54,29 @@ const PopularActivityList = () => {
         <Image src={Arrow_Left} alt="left arrow" />
       </SlickButtonFix>
     ),
+    responsive: [
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 786,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+        },
+      },
+      {
+        breakpoint: 640,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+        },
+      },
+    ],
   };
 
   const { data } = usePopularData();
@@ -62,11 +85,11 @@ const PopularActivityList = () => {
   const popularActivities = activities.slice(0, 6);
 
   return (
-    <div className="md:mb-15 mb-10">
-      <h1 className="mb-4 text-[18px] font-bold md:mb-8 md:text-[36px]">
+    <div className="md:mb-15 mb-10 mt-32 md:mt-40">
+      <h1 className="container mb-4 text-[18px] font-bold md:mb-8 md:text-[36px]">
         🔥인기 체험
       </h1>
-      <div>
+      <div className="container">
         <Slider {...settings}>
           {popularActivities.map((activity) => (
             <PopularActivityCard key={activity.id} cardData={activity} />

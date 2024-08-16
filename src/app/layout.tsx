@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="kr">
+    <html lang="ko">
       <body className="min-w-80 antialiased">
         <AuthProvider>
           <ReactQueryProvider>{children}</ReactQueryProvider>
