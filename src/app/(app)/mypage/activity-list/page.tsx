@@ -6,6 +6,7 @@ import Button from "@app/components/Button/Button";
 import { MyActivityType } from "@customTypes/MyActivity-Status";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import Image from "next/image";
+import EmptyState from "@components/EmptyState/EmptyState";
 import MyActivity from "./MyActivity";
 import { MyActivityListContext } from "@context/MyActivityListContext";
 import Empty from "@icons/icon_empty.svg";
@@ -74,18 +75,7 @@ export default function ActivityList() {
           ))}
         </ul>
       ) : (
-        <div className="mt-16 flex flex-col items-center xl:mt-20">
-          <Image
-            src={Empty}
-            alt="더보기 버튼"
-            width={200}
-            height={200}
-            className="md:h-60 md:w-60"
-          />
-          <p className="mt-3 text-2xl font-medium text-gray-700 xl:mt-5">
-            아직 등록한 체험이 없어요
-          </p>
-        </div>
+        <EmptyState>아직 등록한 체험이 없어요</EmptyState>
       )}
     </div>
   );
